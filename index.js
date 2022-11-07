@@ -20,7 +20,7 @@ async function run() {
     try{
         const productCollection = client.db('emaJohn').collection('products');
 
-        // pagination practice
+        // pagination API practice
         app.get('/products', async(req, res) => {
             const page = parseInt(req.query.page);
             const size = parseInt(req.query.size);
@@ -32,6 +32,7 @@ async function run() {
             res.send({count, products});
         })
 
+        // Use Post to load some products using keys
         app.post('/productsByIds', async(req, res) => {
             const ids = req.body;
             const objectIds = ids.map(id => ObjectId(id));
